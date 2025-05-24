@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>随心推千川计划投放利润计算器-CZR.NET</title>
+    <link rel="stylesheet" href="./css/bootstrap.css">
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+
+        .result-area {
+            background-color: #e9ecef;
+            padding: 10px;
+            margin-top: 20px;
+            border-radius: 10px;
+            box-shadow: 0 5px 5px -5px #ccc;
+        }
+
+        .btn-wide {
+            width: 260px;
+        }
+
+        /* .result-area {
+            display: flex;
+            flex-wrap: wrap;
+        } */
+
+        /* .result-area .col-md-6 {
+            width: 50%;
+            padding: 10px;
+            box-sizing: border-box;
+        } */
+        .container{
+            width: 100%;
+            height: 100%;
+            overflow-y: auto;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 offset-md-3">
+                 <h4></h4>
+                <h2 class="text-center">投放利润计算器</h2>
+                  <h4></h4>
+
+                <form id="roi-form">
+                    <div class="form-group row">
+                        <label for="price" class="col-sm-2-2 col-form-label col-4">广告消耗：</label>
+                        <div class="col-sm-4-4 col-8">
+                            <div class="input-group">
+                                <input type="text" class="form-control rounded-0" id="price" value="" required>
+                                <span class="input-group-text">元</span>
+                            </div>
+                        </div>
+<!--                        <label for="commission-rate" class="col-sm-2 col-form-label col-4">佣金率：</label>-->
+                        <label for="price" class="col-sm-2-2 col-form-label col-4">成交金额：</label>
+                        <div class="col-sm-4-4 col-8">
+                            <div class="input-group">
+                                <input type="text" class="form-control rounded-0" id="price6" value="" required>
+                                <span class="input-group-text">元</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group row">
+                       
+                        <label for="commission-rate" class="col-sm-2-2 col-form-label col-4">佣金率：</label>
+                        <div class="col-sm-4-4 col-8">
+                            <div class="input-group">
+                                <input type="text" class="form-control rounded-0" id="commission-rate" value=""
+                                    required>
+                                <span class="input-group-text">%</span>
+                            </div>
+                        </div>
+                        <label for="refund-rate" class="col-sm-2-2 col-form-label col-4">退货率：</label>
+                        <div class="col-sm-4-4 col-8">
+                            <div class="input-group">
+                                <input type="text" class="form-control rounded-0" id="refund-rate" value="5" required>
+                                <span class="input-group-text">%</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                       
+                        
+                        <label for="platform-fee" class="col-sm-2-2 col-form-label col-4">平台费：</label>
+                        <div class="col-sm-4-4 col-8">
+                            <div class="input-group">
+                                <input type="text" class="form-control rounded-0" id="platform-fee" value="10" required>
+                                <span class="input-group-text">%</span>
+                            </div>
+                        </div>
+                    </div>
+
+                   
+                    <div class="text-center">
+                        <button type="submit" class="btn btn-danger btn-wide">计算</button>
+                    </div>
+                </form>
+
+                <!-- 显示结果 -->
+                
+                <div class="result-area">
+                    <h4></h4>
+                    <p><b>计算结果</b></p>
+                    
+                    <div class="row">
+                        
+                        <div class="col-md-6 col-sm-6 fz2">
+                            <p>利润金额：<b style="color: #ffa237;" id="estimated-settlement"></b></p>
+<!--                            <p id="estimated-commission" >预估佣金：</p>-->
+                        </div>
+                        <div class="col-md-6 col-sm-6 fz2">
+                             <p>支付 ROI：<b style="color: #ffa237;" id="estimated-break-even-roi"></b></p>
+                        </div>
+                        <div class="col-md-8" style="font-size: 12px;">
+                        <p><span style="color:#2E2E2E;" id="shijian"></span></p>
+                        </div>
+                        <div class="col-md-9" style="font-size: 12px;">
+                        <p><b>PS：商家在ROI商家版计算佣金率，商家平台费按实际填写(如：5%)</b></p>
+                        </div>
+                    </div>
+
+                   
+                    
+                </div>
+        <div class="row">
+            <div class="col-md-6 offset-md-3">
+                <h4></h4>
+                <h5 class="text-center"><a href="index.html">ROI计算器达人版</a> | <a href="shangjia.html">ROI计算器商家版</a></h5>
+                <h2 class="text-center" style="color:#DD060A;">ii</h2>
+                 <p class="text-center" style="font-size: 12px; color: #007bff;">CZR.NET ｜ Cyber Zone Repository</p>
+                
+            </div>
+        </div>
+    </div>
+
+        </div>
+    </div>
+    <script src="https://lf6-cdn-tos.bytecdntp.com/cdn/jquery/3.6.0/jquery.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"></script>
+
+
+    <script>
+        $(document).ready(function () {
+            $('#roi-form').submit(function (event) {
+                event.preventDefault();
+                calculateROI();
+            });
+
+            function calculateROI() {
+                var price = parseFloat($('#price').val());  //广告消耗
+                var price6 = parseFloat($('#price6').val());  //成绩金额
+                var commissionRate = parseFloat($('#commission-rate').val());  //商品佣金率
+                var refundRate = parseFloat($('#refund-rate').val());   //商品退货率
+                var platformFee = parseFloat($('#platform-fee').val());  //平台费率
+
+                
+                var estimatedSettlement = price6 * (commissionRate * 0.01) * (1 - (refundRate * 0.01) - (platformFee * 0.01));  //结算预估金额
+                var time = new Date();
+            var year = time.getFullYear();    //获取当前年份
+            var month = time.getMonth() + 1;      //获取当前月份
+            var date = time.getDate();          //获取当前日
+            var day = time.getDay();          //获取当前星期几
+            var hours = time.getHours();          //获取小时
+            var minutes = time.getMinutes();        //获取分钟
+            var seconds = time.getSeconds();        //获取秒
+            var timeStr = year + '年' + month + '月' + date + '日' + ' ' + hours + ':' + minutes + ':' + seconds;
+                
+                $('#estimated-settlement').text((estimatedSettlement - price).toFixed(2) + '元'); // 利润金额
+                $('#estimated-break-even-roi').text( (price6 / price).toFixed(2)); // 支付ROI
+                $('#shijian').text('计算时间：' + timeStr);
+            }
+        });
+    </script>
+</body>
+
+</html>
