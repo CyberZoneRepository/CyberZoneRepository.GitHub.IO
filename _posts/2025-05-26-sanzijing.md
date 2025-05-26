@@ -1,7 +1,7 @@
 ---
 title: 三字经
 layout: post
-category: default
+category: article
 description: 以下文本取自香港中文大学图书馆馆藏之《三字经释句》，作者：王应麟　朝代：南宋。
 ---
 作者：王应麟　南宋
