@@ -50,14 +50,14 @@
 
                 <form id="roi-form">
                     <div class="form-group row">
-                        <label for="price" class="col-sm-2 col-form-label col-4">价格：</label>
+                        <label for="price" class="col-sm-2 col-form-label col-4">品售价：</label>
                         <div class="col-sm-4 col-8">
                             <div class="input-group">
                                 <input type="text" class="form-control rounded-0" id="price" value="" required>
                                 <span class="input-group-text">元</span>
                             </div>
                         </div>
-                        <label for="commission-rate" class="col-sm-2 col-form-label col-4">成本：</label>
+                        <label for="commission-rate" class="col-sm-2 col-form-label col-4">成本价：</label>
                         <div class="col-sm-4 col-8">
                             <div class="input-group">
                                 <input type="text" class="form-control rounded-0" id="commission-rate" value=""
@@ -126,29 +126,21 @@
                         </div>
                     </div>
                     <div class="row">
+                        
+                        
                         <div class="col-md-6 col-sm-6 fz">
-                            <!-- <p id="estimated-break-even-roi">预估保本ROI：</p> -->
-                            <p id="conservative-price-suggestion" style="color:#dc3545;">随心推投流出价建议</p>
-                            <p>保守出价：<span style="color: #ffa237;" id="baoshou"></span></p>
-                            <p>稳妥出价：<span style="color: #ffa237;" id="wentuo"></span></p>
-                            <p>激进出价：<span style="color: #ffa237;" id="jijin"></span></p>
-                            
+                            <p id="conservative-price-suggestion8" style="color:#007bff;">千川全域目标ROI出价</p>
+                            <p>ROI*0.5倍：<span style="color: #ffa237;" class="roi-price"></span></p>
+                            <p>ROI*0.6倍：<span style="color: #ffa237;" class="roi-price1"></span></p>
+                            <p>ROI*0.7倍：<span style="color: #ffa237;" class="roi-price2"></span></p>
+                            <p>ROI*0.8倍：<span style="color: #ffa237;" class="roi-price3"></span></p>
                         </div>
                         <div class="col-md-6 col-sm-6 fz">
-                            <!-- <p id="estimated-settlement-break-even-roi">结算预估保本ROI：</p> -->
-                            <p id="conservative-price-suggestion2" style="color:#dc3545;">千川投流出价参考：</p>
-                            <p>保守出价：<span style="color: #ffa237;" id="baoshou2"></span></p>
-                            <p>稳妥出价：<span style="color: #ffa237;" id="wentuo2"></span></p>
-                            <p>激进出价：<span style="color: #ffa237;" id="jijin2"></span></p>
-                            
-                        </div>
-                        <div class="col-md-6 col-sm-6 fz">
-                            <p id="conservative-price-suggestion8" style="color:#dc3545;">全域启动出价</p>
-                            <p>ROI出价：<span style="color: #ffa237;" class="roi-price"></span></p>
-                        </div>
-                        <div class="col-md-6 col-sm-6 fz">
-                            <p id="conservative-price-suggestion9" style="color:#dc3545;">全域稳妥出价</p>
-                            <p>ROI出价：<span style="color: #ffa237;" class="roi-price2"></span></p>
+                            <p id="conservative-price-suggestion9" style="color:#007bff;">：</p>
+                            <p>ROI*0.9倍：<span style="color: #ffa237;" class="roi-price4"></span></p>
+                            <p>ROI*1.0倍：<span style="color: #ffa237;" class="roi-price5"></span></p>
+                            <p>ROI*1.1倍：<span style="color: #ffa237;" class="roi-price6"></span></p>
+                            <p>ROI*1.2倍：<span style="color: #ffa237;" class="roi-price7"></span></p>
                         </div>
                         <div class="col-md-6 col-sm-6 fz">
                             <!-- <p id="estimated-break-even-roi">预估保本ROI：</p> -->
@@ -180,7 +172,7 @@
         <div class="row">
             <div class="col-md-6 offset-md-3">
                 <h4></h4>
-                <h5 class="text-center"><a href="lirun.html">利润盈亏计算器</a> | <a href="index.html">ROI计算器达人版</a></h5>
+                <h5 class="text-center"><a href="lirun.html">利润盈亏计算器</a> | <a href="shangjia.html">ROI计算器商家版</a>|<a href="shipinhao.html">视频号ROI计算器</a></h5>
                 <h2 class="text-center" style="color:#DD060A;">ii</h2>
                  <p class="text-center" style="font-size: 12px; color: #007bff;">CZR.NET ｜ Cyber Zone Repository</p>
 
@@ -190,8 +182,8 @@
 
         </div>
     </div>
-    <script src="https://lf6-cdn-tos.bytecdntp.com/cdn/jquery/3.6.0/jquery.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://lf6-cdn-tos.bytecdntp.com/cdn/jquery/3.6.0/jquery.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"></script>
 
 
     <script>
@@ -214,7 +206,9 @@
                 var yongjinlv = (1 - (commissionRate / price)) * 100;
                 var chunyongjinlv = yongjinlv - platformFee;
                 var estimatedBreakEvenROI = 1 / (yongjinlv * 0.01);  //预估成本
-                var estimatedSettlementBreakEvenROI = 1 / ((yongjinlv * 0.01) * (1 - (refundRate * 0.01) - (platformFee * 0.01)));  //结算预估保本
+                var ROIyjl = (yongjinlv * 0.01) * (1 - (refundRate * 0.01));
+                var ROIsxf = ROIyjl * (1 - (platformFee * 0.01));
+                var estimatedSettlementBreakEvenROI = 1 / ROIsxf;  //结算预估保本
                 console.log('佣金率=', commissionRate, '退货率=', refundRate)
 
                 var baoshou = estimatedSettlementBreakEvenROI;  //保守出价
@@ -252,6 +246,14 @@
                 $('#baoshou2').text((estimatedSettlement * 0.85).toFixed(2) + '~' + (estimatedSettlement * 1.05).toFixed(2));
                 $('#wentuo2').text((estimatedSettlement * 1.05).toFixed(2) + '~' + (estimatedSettlement * 1.25).toFixed(2));
                 $('#jijin2').text((estimatedSettlement * 1.25).toFixed(2) + '~' + (estimatedSettlement * 1.55).toFixed(2));
+                $('.roi-price').text((estimatedSettlementBreakEvenROI * 0.5).toFixed(2));
+                $('.roi-price1').text((estimatedSettlementBreakEvenROI * 0.6).toFixed(2));
+                $('.roi-price2').text((estimatedSettlementBreakEvenROI * 0.7).toFixed(2));
+                $('.roi-price3').text((estimatedSettlementBreakEvenROI * 0.8).toFixed(2));
+                $('.roi-price4').text((estimatedSettlementBreakEvenROI * 0.9).toFixed(2));
+                $('.roi-price5').text((estimatedSettlementBreakEvenROI * 1).toFixed(2));
+                $('.roi-price6').text((estimatedSettlementBreakEvenROI * 1.1).toFixed(2));
+                $('.roi-price7').text((estimatedSettlementBreakEvenROI * 1.2).toFixed(2));
                 
                 $('#chujia08').text((estimatedSettlement * 0.8).toFixed(2));
                 $('#chujia09').text((estimatedSettlement * 0.9).toFixed(2));
@@ -269,5 +271,4 @@
         });
     </script>
 </body>
-
 </html>
